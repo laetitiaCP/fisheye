@@ -1,9 +1,14 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+
+        const link = document.createElement('a');
+        let locURL = "photographer.html?id=" + id + "&name=" + name + "&portrait=" + portrait + "&city=" + city + "&country=" + country + "&tagline=" + tagline ;
+        link.setAttribute("href", locURL);
+        link.setAttribute("aria-label","lien vers la page de présentation du photographe");
         
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
@@ -24,12 +29,14 @@ function photographerFactory(data) {
         const textPrice = document.createElement('p');
         textPrice.className='card-price'
         textPrice.textContent = price + '€/jour';
-
-        article.appendChild(img);
-        article.appendChild(h2);
+        
+        article.appendChild(link);
+        link.appendChild(img);
+        link.appendChild(h2);
         article.appendChild(textCity);
         article.appendChild(textTagline);
         article.appendChild(textPrice);
+
         return (article);
     }
     return { name, picture, getUserCardDOM }
