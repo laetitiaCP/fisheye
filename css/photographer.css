@@ -3,9 +3,60 @@
 }
 
 .photograph-header {
+    display: flex;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    position: relative;
+}
+
+.photograph-header img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    clip-path: circle(30%);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    background: #C4C4C4;
+}
+
+.photograph-header article {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.photograph-header div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-left: 50px;
+}
+
+.photograph-header a {
+   display: flex;
+   align-self: center;
+   text-decoration: none;
+}
+
+.photograph-header h2 {
+    color: #D3573C;
+    font-size: 64px;
+    margin: 0;
+}
+
+.photograph-header .card-city {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.photograph-header .card-tagline {
+    margin-top: 19px;
+    font-size: 18px;
+}
+
+.photograph-header .card-price {
+    display: none;
 }
 
 .contact_button {
@@ -19,6 +70,10 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    top: 120px;
+    left: 45%;
+    
 }
 
 .modal {

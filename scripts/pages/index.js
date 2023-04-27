@@ -1,18 +1,4 @@
    
-     
-    async function getPhotographers() {
-
-        let jsonData = fetch('https://raw.githubusercontent.com/OpenClassrooms-Student-Center/Front-End-Fisheye/main/data/photographers.json')
-            .then(response => {
-                return response.json();
-            })
-            .catch(err => {
-                console.log("Erreur de récupération des données");
-                console.log(err);
-            });
-        return jsonData
-    }
-
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
         photographers.forEach((photographer) => {
