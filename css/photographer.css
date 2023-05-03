@@ -129,3 +129,18 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.medias-section article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.medias-section img, video {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+    margin: 47px;
+    object-fit: cover;
+}
+
