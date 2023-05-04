@@ -18,7 +18,6 @@ function mediaFactory(photographer, medias) {
         const article = document.createElement('article');
 
         const folder = `assets/medias/${nameWhithoutSpace}/`;
-        let title;
 
         for (let file of mapMedias) {
             if(String(file).includes('.jpg')) {
@@ -39,20 +38,7 @@ function mediaFactory(photographer, medias) {
                 a.appendChild(title);
                 article.appendChild(a);
             }
-        }
-
-        /*for(let i=0; i<mapMedias.size; i++) {
-            if(String(mapMedias[i]).includes('.jpg')) {
-                let image = new imageDisplay(folder, mapMedias[i]);
-                article.appendChild(image);
-            }
-            if(String(mapMedias[i]).includes('.mp4')) {
-                let video = new videoDisplay(folder, mapMedias[i]);
-                article.appendChild(video);
-            }
-        }*/
-        
-
+        }     
 
         return (article);
 
