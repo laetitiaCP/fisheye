@@ -3,6 +3,7 @@ function videoDisplay(folder, nameVideo) {
     const source = document.createElement('source');
     const pathVideo = folder + nameVideo;
     video.setAttribute("controls", "true");
+    video.addEventListener("click", function(){ openMedia(this)});
     source.setAttribute("src", pathVideo);
     source.setAttribute("alt", "video");
     source.setAttribute("type", "video/mp4");

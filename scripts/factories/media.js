@@ -5,7 +5,6 @@ function mediaFactory(photographer, medias) {
     for(let i=0; i<medias.length; i++) {
         if(medias[i].photographerId === photographer.id) {
             if(medias[i].image) {
-                //mapMedias.push(medias[i].image);
                  mapMedias.set(medias[i].title, medias[i].image);
             }
             if(medias[i].video) {
@@ -16,28 +15,23 @@ function mediaFactory(photographer, medias) {
 
     function getUserMedias() {
         const article = document.createElement('article');
-
         const folder = `assets/medias/${nameWhithoutSpace}/`;
-
         for (let file of mapMedias) {
+            let locDiv = document.createElement('div');
+            let title = document.createElement('p');
+            title.textContent = file[0];
+            
             if(String(file).includes('.jpg')) {
-                let a = document.createElement('a');
-                let title = document.createElement('p');
-                title.textContent = file[0];
                 let image = new imageDisplay(folder, file[1]);
-                a.appendChild(image);
-                a.appendChild(title);
-                article.appendChild(a);
+                locDiv.appendChild(image);
             }
             if(String(file).includes('.mp4')) {
-                let a = document.createElement('a');
-                let title = document.createElement('p');
-                title.textContent = file[0];
                 let video = new videoDisplay(folder, file[1]);
-                a.appendChild(video);
-                a.appendChild(title);
-                article.appendChild(a);
+                locDiv.appendChild(video);
             }
+
+            locDiv.appendChild(title);
+            article.appendChild(locDiv);
         }     
 
         return (article);

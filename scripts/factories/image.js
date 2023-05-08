@@ -3,7 +3,7 @@ function imageDisplay(folder, nameImg) {
     const pathImg = folder + nameImg;
     img.setAttribute("src", pathImg);
     img.setAttribute("alt", "photographie");
-
-
-return img;
+    img.setAttribute("onclick", "openMedia(this)");
+    
+    return img;
 }
