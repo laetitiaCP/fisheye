@@ -22,16 +22,20 @@ function mediaFactory(photographer, medias) {
             title.textContent = file[0];
             
             if(String(file).includes('.jpg')) {
-                let image = new imageDisplay(folder, file[1]);
+                let image = new imageDisplay(folder, file[1], mapMedias);
                 locDiv.appendChild(image);
+                image.onclick = () => {
+                    document.getElementById("lightbox").style.display = "block";
+                    openMedia(image, mapMedias, folder, file[1]);
+               };
             }
             if(String(file).includes('.mp4')) {
                 let video = new videoDisplay(folder, file[1]);
                 locDiv.appendChild(video);
             }
-
             locDiv.appendChild(title);
             article.appendChild(locDiv);
+
         }     
 
         return (article);

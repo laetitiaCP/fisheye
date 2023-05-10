@@ -1,52 +1,62 @@
-function openMedia(image) {
-    const srcImage = image.src;
-    window.addEventListener("click", () => {
-        document.getElementById("lightbox").style.display = "block";
-        displayMedias(srcImage);
-    })        
-}
+const medias = document.getElementById('myMedias');
+const imageElement = document.createElement('img');
+const prevLink = document.createElement('a');
+const nextLink = document.createElement('a');
+let counter = 0;
+prevLink.className = "prev";
+prevLink.textContent = "précédent";
+nextLink.className = "next";
+nextLink.textContent = "suivant";
 
-function displayMedias (parImage) {
-    const medias = document.getElementById('myMedias');
-    const imageElement = document.createElement('img');
-    imageElement.setAttribute('src', parImage);
-    medias.appendChild(imageElement);
+medias.appendChild(prevLink);
+medias.appendChild(nextLink);
+
+function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
+    const srcImage = parImage.src;
+    showImage(srcImage);
+
+    let listMedias = [];
+    listMedias = mapToListWithoutVideo(parMapMedias);
+    let mediaIndex;
+    for (let i = 0; i < listMedias.length ; i++) {
+        if (listMedias[i] === parNameImg) {
+             mediaIndex = i;
+             break;
+        }
+    }
+    
+    nextLink.onclick = function() {
+        plusMedias(1, mediaIndex, listMedias, parFolder);
+    }
+
+    prevLink.onclick = function() {
+        plusMedias(-1, mediaIndex, listMedias, parFolder);
+    }
 }
 
 function closeMedia() {
     const modal = document.getElementById("lightbox");
-	window.addEventListener("click", () => {
-        modal.style.display = "none";
-    })
+    modal.style.display = "none";
+    counter = 0;
 }
 
-let mediaIndex = 1;
-showMedias(mediaIndex);
-
-function plusMedia(n) {
-    showMedias(mediaIndex += n);
+function plusMedias(n, parIndex, parListMedias, parFolder) {
+    counter = (counter + n) % parListMedias.length;
+    let locIdx = parIndex + counter;
+    
+    if (locIdx <= -1) {
+        locIdx = parListMedias.length + locIdx;
+    }
+    if (locIdx >= parListMedias.length) {
+        locIdx = locIdx - parListMedias.length ;
+    }
+    console.log(locIdx)
+    let pathImage = parFolder + parListMedias[locIdx];
+    showImage(pathImage);
 }
 
-function currentMedia(n) {
-    showMedias(mediaIndex = n);
-}
-
-function showMedias(n) {
-    let i;
-    let medias = document.getElementById("myMedias");
-
-    if(n > medias.length) {
-        mediaIndex = 1;
-    }
-
-    if (n < 1) {
-        mediaIndex = medias.length ;
-    }
-
-    for (i = 0; i < medias.length; i++) {
-        medias[i].style.display = "none";
-    }
-
-    medias[mediaIndex-1].style.display = "block";
+function showImage(parImage) {
+    imageElement.setAttribute('src', parImage);
+    medias.appendChild(imageElement);
 }
 
