@@ -5,7 +5,5 @@ function imageDisplay(parFolder, parNameImg, parTitleImg) {
     img.setAttribute("src", pathImg);
     img.setAttribute("alt", "photographie");        
     img.setAttribute("aria-label", "photographie " + parTitleImg)
-    img.setAttribute("tabindex", "0");
-    
     return img;
 }

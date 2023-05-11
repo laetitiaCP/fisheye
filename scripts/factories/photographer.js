@@ -40,7 +40,7 @@ function photographerFactory(data) {
         const textPrice = document.createElement('p');
         textPrice.className='card-price'
         textPrice.textContent = price + '€/jour';
-        textPrice.setAttribute("aria-label", "prix: " + price + ' euros/jour' );
+        textPrice.setAttribute("aria-label", "prix: " + price + ' €/jour' );
 
         link2.appendChild(h2)
         locDiv.appendChild(link2);
