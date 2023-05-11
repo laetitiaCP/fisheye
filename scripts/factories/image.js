@@ -1,12 +1,11 @@
-function imageDisplay(folder, nameImg, parMapMedias) {
+function imageDisplay(parFolder, parNameImg, parTitleImg) {
     const img = document.createElement('img');
-    const pathImg = folder + nameImg;
+    const pathImg = parFolder + parNameImg;
+    
     img.setAttribute("src", pathImg);
-    img.setAttribute("alt", "photographie");
-    /*
-    img.onclick = function() {
-        openMedia(this.src, parMapMedias, folder, nameImg);
-    }*/
+    img.setAttribute("alt", "photographie");        
+    img.setAttribute("aria-label", "photographie " + parTitleImg)
+    img.setAttribute("tabindex", "0");
     
     return img;
 }

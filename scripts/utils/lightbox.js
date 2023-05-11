@@ -1,23 +1,42 @@
+const lightbox = document.getElementById("lightbox");
+const lightboxContent = document.getElementsByClassName("lightbox-content");
+const closeImg =  document.getElementById("close-img");
 const medias = document.getElementById('myMedias');
 const imageElement = document.createElement('img');
 const prevLink = document.createElement('a');
 const nextLink = document.createElement('a');
+const chevronLeft = document.createElement('i');
+const chevronRight = document.createElement('i');
+
+let listMedias = [];
+let mediaIndex;
 let counter = 0;
+
 prevLink.className = "prev";
-prevLink.textContent = "précédent";
+chevronLeft.className = "fa-solid fa-chevron-left fa-2xl";
+prevLink.appendChild(chevronLeft);
+
 nextLink.className = "next";
-nextLink.textContent = "suivant";
+chevronRight.className = "fa-solid fa-chevron-right fa-2xl";
+nextLink.appendChild(chevronRight);
 
 medias.appendChild(prevLink);
 medias.appendChild(nextLink);
 
 function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
+    lightbox.setAttribute("tabindex","-1");
+    prevLink.setAttribute("tabindex","1+");
+    nextLink.setAttribute("tabindex","1+");
+    closeImg.setAttribute("tabindex","1+");
+    lightbox.focus();  
+    main.setAttribute("aria-hidden", "true");           
+    lightbox.setAttribute("aria-hidden", "false");
+    body.classList.add("no-scroll");
+
     const srcImage = parImage.src;
     showImage(srcImage);
-
-    let listMedias = [];
     listMedias = mapToListWithoutVideo(parMapMedias);
-    let mediaIndex;
+    
     for (let i = 0; i < listMedias.length ; i++) {
         if (listMedias[i] === parNameImg) {
              mediaIndex = i;
@@ -32,11 +51,25 @@ function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
     prevLink.onclick = function() {
         plusMedias(-1, mediaIndex, listMedias, parFolder);
     }
+
+    lightbox.addEventListener("keyup", function(e) {
+        if( e.key === "Escape") {
+            closeMedia();
+        }
+        if(e.key === "ArrowLeft"){
+            plusMedias(-1, mediaIndex, listMedias, parFolder);
+        }
+        if(e.key === "ArrowRight"){
+            plusMedias(1, mediaIndex, listMedias, parFolder);
+        }
+    })
 }
 
 function closeMedia() {
-    const modal = document.getElementById("lightbox");
-    modal.style.display = "none";
+    main.setAttribute("aria-hidden", "false");
+    lightbox.setAttribute("aria-hidden", "true");
+    body.classList.remove("no-scroll");
+    lightbox.style.display = "none";
     counter = 0;
 }
 
@@ -50,13 +83,15 @@ function plusMedias(n, parIndex, parListMedias, parFolder) {
     if (locIdx >= parListMedias.length) {
         locIdx = locIdx - parListMedias.length ;
     }
-    console.log(locIdx)
     let pathImage = parFolder + parListMedias[locIdx];
     showImage(pathImage);
 }
 
 function showImage(parImage) {
     imageElement.setAttribute('src', parImage);
-    medias.appendChild(imageElement);
+    imageElement.id = "image-modale";
+    medias.appendChild(imageElement); 
 }
+
+
 

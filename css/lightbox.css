@@ -28,18 +28,13 @@
     height: 90%;
 }
 
-
-
 #myMedias {
     /*display: none;*/
     position: relative;
     margin: auto;
     width: 1050px;
     height: 850px;
-    background-color: red;
 }
-
-
 
 #myMedias img {
     width: 1050px;
@@ -47,6 +42,7 @@
     border-radius: 5px;
     top: 0;
     right: 0;
+    object-fit: cover;
 }
 
 /* boutons prev et next */
@@ -56,19 +52,15 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: 48px;
-    padding: 16px;
-    margin-top: -50px;
     color: #901C1C;
-    font-weight: bold;
     font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .next {
-    right: 0;
+    right: -65px;
     border-radius: 3px 0 0 3px;
   }
+
+.prev {
+left: -65px;
+}

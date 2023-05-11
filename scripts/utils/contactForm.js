@@ -1,11 +1,25 @@
+const body = document.getElementById("body");
+const main = document.getElementById("main");
+const modal = document.getElementById("contact_modal");
+const bouttonOpenModal = document.getElementById("open-modal-contact");
+const bouttonCloseModal = document.getElementById("close-modale");
+
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
+    main.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-hidden", "false");
+    body.classList.add("no-scroll");
 	modal.style.display = "block";
+    bouttonCloseModal.focus();
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    main.setAttribute("aria-hidden", "false");
+    modal.setAttribute("aria-hidden", "true");
+    body.classList.remove("no-scroll");
     modal.style.display = "none";
+    bouttonOpenModal.focus();
+
 }
 
 function submitData() {
@@ -19,5 +33,10 @@ function submitData() {
 
     console.log(data);
     form.reset(); 
-
 }
+
+modal.addEventListener("keyup", function(e) {
+    if(e.key === "Escape") {
+        closeModal();
+    }
+})

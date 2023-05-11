@@ -17,3 +17,13 @@ function mapToListWithoutVideo(parMap) {
 
     return listOfValues;
 }
+
+function goHome() {
+    const logo = document.getElementById("goHome");
+    logo.addEventListener("keyup", function(e) {
+        if(e.key === "Enter") {
+            document.location.href = new URL("index.html");
+        }
+    })
+}
+   
