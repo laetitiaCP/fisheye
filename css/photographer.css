@@ -16,8 +16,9 @@
     display: flex;
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 100px 20px 100px;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .photograph-header img {
@@ -242,3 +243,45 @@ form input {
     color: black;
     padding-top: 24px;
 }
+
+/*partie sort*/
+
+.sort {
+    position: relative;
+    width: 370px;
+}
+
+.label-sort {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+#combo-sort {
+    width: 170px;
+    height: 69px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #901C1C;
+    padding: 20px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /*Pour faire disparaître la flèche d'origine*/
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.fa-chevron-down, .fa-chevron-up {
+    color: #FFFFFF;
+    position: absolute;
+    top: 35%;
+    left: 90%;
+    /*pour que l'icône soit également cliquable*/
+    pointer-events: none;
+}
+

@@ -20,6 +20,7 @@ function mediaFactory(photographer, medias) {
 
     function getUserMedias() {
         const article = document.createElement("article");
+        article.setAttribute("id","medias-article");
         const folder = `assets/medias/${nameWhithoutSpace}/`;
         
         for (let file of mapMedias) {
@@ -27,6 +28,7 @@ function mediaFactory(photographer, medias) {
             let title = document.createElement('p');
             let likes = document.createElement("div");
             let span = document.createElement("span");
+
             likes.id = "likes";
             let heart = document.createElement('i');
             heart.setAttribute("aria-label", "bouton cliquable pour liker");
@@ -39,6 +41,7 @@ function mediaFactory(photographer, medias) {
             counter = counter + mapLikes.get(file[0]);
             
             if(String(file).includes(".jpg")) {
+                console.log(photographer.id)
                 let image = new imageDisplay(folder, file[1], file[0]);
                 locDiv.appendChild(image);
                 image.onclick = () => {
@@ -65,7 +68,7 @@ function mediaFactory(photographer, medias) {
                     spanLikes.textContent = parseInt(spanLikes.textContent) + 1;
                 }
             }
-            
+        
             likes.appendChild(title);
             likes.appendChild(span);
             likes.appendChild(heart);
@@ -74,11 +77,17 @@ function mediaFactory(photographer, medias) {
         }
 
         let spanLikes = document.createElement("span");
+        spanLikes.setAttribute("id", "total-number-likes");
         spanLikes.textContent = counter;
         let iHeart = document.createElement("i");
+        iHeart.setAttribute("id", "icone-heart");
         iHeart.className = "fa-solid fa-heart fa-xl heart";
+        let partPrice = document.createElement('p');
+        partPrice.setAttribute("id", "price-journey");
+        partPrice.textContent = photographer.price + "€ / jour";
         likesSection.appendChild(spanLikes);
         likesSection.appendChild(iHeart);
+        likesSection.appendChild(partPrice);
 
         return (article);
     }

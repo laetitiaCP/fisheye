@@ -26,4 +26,22 @@ function goHome() {
         }
     })
 }
-   
+
+/**
+ * Pour que l'icône du <select> effectue une rotation lorsque l'on clique sur le <select>
+ */
+function rotateIcone() {
+    const icone = document.getElementById("iconeSelect");
+    const isRotated = icone.getAttribute("isRotated");
+
+    if(isRotated === "false") {
+        icone.classList.remove("fa-chevron-down");
+        icone.classList.add("fa-chevron-up");
+        icone.setAttribute("isRotated", "true");
+    } else {
+        icone.classList.remove("fa-chevron-up");
+        icone.classList.add("fa-chevron-down");
+        icone.setAttribute("isRotated", "false");
+    }
+}
+

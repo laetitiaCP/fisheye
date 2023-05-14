@@ -16,9 +16,10 @@ function photographerFactory(data) {
         link2.setAttribute("aria-label","lien vers la page de présentation du photographe");
 
         const img = document.createElement( 'img' );
+        img.setAttribute("id", "image-photographer")
         img.setAttribute("src", picture);
         img.setAttribute("alt", "photographie représentant le photographe " + name);
-        
+        img.setAttribute("photographId", id);
         
         
         const h2 = document.createElement( 'h2' );

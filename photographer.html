@@ -18,6 +18,15 @@
       <div class="photograph-header">
         <button id="open-modal-contact" class="contact_button" onclick="displayModal()" aria-label="Accès au formulaire de contact">Contactez-moi</button>
       </div>
+      <div class="sort">
+        <label class="label-sort" for="combo-sort">Trier par </label>
+        <select id="combo-sort" onChange="sortMedias(this.value)" onclick="rotateIcone()">
+          <option id="popularite" value="popularite">Popularité</option>
+          <option id="date" value="date">Date</option>
+          <option id="titre" value="titre">Titre</option>
+        </select>
+        <i id="iconeSelect" class="fa-solid fa-chevron-down" isRotated="false" ></i>
+      </div>
       <div class="medias-section"></div>
       <div class="likesAndPrice"></div>
     </main>
@@ -64,5 +73,6 @@
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/utils/lightbox.js"></script>
     <script src="./scripts/utils/utils.js"></script>
+    <script src="./scripts/utils/sorting.js"></script>
   </body>
 </html>
