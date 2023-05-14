@@ -25,7 +25,7 @@ function mediaFactory(photographer, medias) {
         
         for (let file of mapMedias) {
             let locDiv = document.createElement('div');
-            let title = document.createElement('p');
+            let title = document.createElement('h2');
             let likes = document.createElement("div");
             let span = document.createElement("span");
 

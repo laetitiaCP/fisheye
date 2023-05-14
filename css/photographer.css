@@ -44,13 +44,7 @@
     margin-left: 50px;
 }
 
-.photograph-header a {
-   display: flex;
-   align-self: center;
-   text-decoration: none;
-}
-
-.photograph-header h2 {
+.photograph-header h1 {
     color: #D3573C;
     font-size: 64px;
     margin: 0;
@@ -181,8 +175,9 @@ form input {
     object-fit: cover;
 }
 
-.medias-section p {
+.medias-section h2 {
     color: #901C1C;
+    font-weight: 400;
     font-size: 24px;
     line-height: 31px;
     margin-top: 10px;

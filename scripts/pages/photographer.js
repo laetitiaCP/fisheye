@@ -17,7 +17,7 @@ async function displayPhotographerDetails(photographers, media) {
    
     const photographerModel =  photographerFactory(photographer);
     const mediaModel = mediaFactory(photographer, media);
-    const userCardDOM = photographerModel.getUserCardDOM();
+    const userCardDOM = photographerModel.getPhotographerHeader();
     const userMedias = mediaModel.getUserMedias();
     photographersSection.appendChild(userCardDOM);
     mediasSection.appendChild(userMedias);

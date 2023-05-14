@@ -55,5 +55,46 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getPhotographerHeader() {
+        const article = document.createElement( 'article' );
+        
+        const img = document.createElement( 'img' );
+        img.setAttribute("id", "image-photographer")
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", "photographie représentant le photographe " + name);
+        img.setAttribute("photographId", id);
+        
+        const h1 = document.createElement( 'h1' );
+        h1.textContent = name;
+        h1.setAttribute("aria-label", "name: " + name);
+
+        const locDiv = document.createElement('div');
+        
+        const textCity = document.createElement('p');
+        textCity.className = 'card-city';
+        textCity.textContent = city + ', ' + country;
+        textCity.setAttribute("aria-label", "ville: " + city + "pays: " +country);
+        
+        const textTagline= document.createElement('p');
+        textTagline.className = 'card-tagline';
+        textTagline.textContent = tagline;
+        textTagline.setAttribute("aria-label", "tagline: " + tagline);
+
+        const textPrice = document.createElement('p');
+        textPrice.className='card-price'
+        textPrice.textContent = price + '€/jour';
+        textPrice.setAttribute("aria-label", "prix: " + price + ' €/jour' );
+
+        locDiv.appendChild(h1);
+        locDiv.appendChild(textCity);
+        locDiv.appendChild(textTagline);
+        locDiv.appendChild(textPrice);
+        
+        article.appendChild(img);
+        article.appendChild(locDiv);
+
+        return (article);
+    }
+    return { name, picture, getUserCardDOM, getPhotographerHeader}
 }

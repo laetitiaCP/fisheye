@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -20,40 +20,40 @@
       </div>
       <div class="sort">
         <label class="label-sort" for="combo-sort">Trier par </label>
-        <select id="combo-sort" onChange="sortMedias(this.value)" onclick="rotateIcone()">
-          <option id="popularite" value="popularite">Popularité</option>
-          <option id="date" value="date">Date</option>
-          <option id="titre" value="titre">Titre</option>
+        <select id="combo-sort" role="listbox" onChange="sortMedias(this.value)" onclick="rotateIcone()">
+          <option id="popularite" value="popularite" aria-label="tri par popularité">Popularité</option>
+          <option id="date" value="date" aria-label="tri par date">Date</option>
+          <option id="titre" value="titre" aria-label="tri par titre">Titre</option>
         </select>
-        <i id="iconeSelect" class="fa-solid fa-chevron-down" isRotated="false" ></i>
+        <i id="iconeSelect" class="fa-solid fa-chevron-down" aria-label="" isRotated="false" ></i>
       </div>
       <div class="medias-section"></div>
       <div class="likesAndPrice"></div>
     </main>
-    <div id="contact_modal" aria-modal="true" role="dialog" tabindex="-1" aria-describedby="Fenetre de contact">
+    <div id="contact_modal" aria-modal="true" role="dialog" aria-describedby="Fenetre de contact">
 			<div class="modal">
 				<header class="header-modal">
           <h2 aria-label="Formulaire de contact">Contactez-moi</h2>
-          <img id="close-modale" src="assets/icons/close.svg" onclick="closeModal()" alt="croix pour fermer la fenêtre du formulaire" tabindex="1"/>
+          <img id="close-modale" src="assets/icons/close.svg" onclick="closeModal()" tabindex="-1" alt="croix pour fermer la fenêtre du formulaire"/>
         </header>
 				<form id="form">
 					<div>
 						<label for="first">Prénom</label>
-						<input type="text" id="first" name="first" tabindex="2" aria-label="Entrez votre prénom"/>
+						<input type="text" id="first" name="first" aria-label="Entrez votre prénom"/>
 					</div>
           <div>
 						<label for="name">Nom</label>
-						<input type="text" id="name" name="name" tabindex="3" aria-label="Entrez votre nom"/>
+						<input type="text" id="name" name="name" aria-label="Entrez votre nom"/>
 					</div>
           <div>
 						<label for="email">Email</label>
-						<input type="text" id="email" name="email" tabindex="4" aria-label="Entrez votre adresse mail"/>
+						<input type="text" id="email" name="email" aria-label="Entrez votre adresse mail"/>
 					</div>
           <div>
 						<label for="message">Votre message</label>
-						<textarea id="message" cols="70" rows="10" tabindex="5" aria-label="Entrez votre message"></textarea>
+						<textarea id="message" cols="70" rows="10" aria-label="Entrez votre message"></textarea>
 					</div>
-          <input id="submit-button" type="button" value="Envoyer" tabindex="6" aria-label="Boutton envoyer" onclick="submitData()" />
+          <input id="submit-button" type="button" value="Envoyer" aria-label="Boutton envoyer" onclick="submitData()" />
 				</form>
 			</div>
 		</div>
