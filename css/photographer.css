@@ -247,7 +247,7 @@ form input {
     width: 370px;
 }
 
-.label-sort {
+#label-sort {
     font-size: 18px;
     font-weight: 700;
     margin-top: 20px;
