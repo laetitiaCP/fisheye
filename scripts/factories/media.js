@@ -1,6 +1,7 @@
 function mediaFactory(photographer, medias) {
     const nameWhithoutSpace = String(photographer.name).replace(/\s/g,''); // \tous les types d'espaces et /g option global: ne s'arrête pas au premier match
     const likesSection = document.querySelector(".likesAndPrice");
+    const lightbox = document.getElementById("lightbox");
     let mapMedias = new Map();
     let mapLikes = new Map();
     let counter = 0;
@@ -92,4 +93,30 @@ function mediaFactory(photographer, medias) {
         return (article);
     }
     return {getUserMedias};
+}
+
+function imageDisplay(parFolder, parNameImg, parTitleImg) {
+    const img = document.createElement('img');
+    const pathImg = parFolder + parNameImg;
+    
+    img.setAttribute("src", pathImg);
+    img.setAttribute("alt", "photographie " + parTitleImg);        
+    img.setAttribute("aria-label", "photographie " + parTitleImg);
+    img.setAttribute("tabindex", "0");
+    return img;
+}
+
+function videoDisplay(parFolder, parNameVideo, parTitleImg) {
+    const video = document.createElement('video');
+    const source = document.createElement('source');
+    const pathVideo = parFolder + parNameVideo;
+    video.setAttribute("controls", "true");
+    video.addEventListener("click", function(){ openMedia(this)});
+    source.setAttribute("src", pathVideo);
+    source.setAttribute("alt", "video" + parTitleImg);
+    source.setAttribute("type", "video/mp4");
+
+    video.appendChild(source);
+
+return video;
 }

@@ -22,12 +22,12 @@ async function displayPhotographerDetails(photographers, media) {
     photographersSection.appendChild(userCardDOM);
     mediasSection.appendChild(userMedias);
     headerModal.appendChild(nameTitle);
-};
+}
 
 async function init() {
     // Récupère les médias du photographe
     const { photographers, media } = await getPhotographers();
     displayPhotographerDetails(photographers, media);
-};
+}
 
 init();

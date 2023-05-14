@@ -1,5 +1,4 @@
 const lightbox = document.getElementById("lightbox");
-const lightboxContent = document.getElementsByClassName("lightbox-content");
 const closeImg =  document.getElementById("close-img");
 const medias = document.getElementById('myMedias');
 const imageElement = document.createElement('img');

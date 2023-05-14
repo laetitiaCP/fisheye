@@ -173,6 +173,7 @@ form input {
     margin: 47px;
     margin-bottom: 0;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .medias-section h2 {
