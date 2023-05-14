@@ -1,5 +1,3 @@
-import {mediaFactory} from "media.js"
-
 async function displayPhotographerDetails(photographers, media) {
   const photographersSection = document.querySelector(".photograph-header");
   const mediasSection = document.querySelector(".medias-section");
