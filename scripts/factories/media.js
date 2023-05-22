@@ -35,6 +35,7 @@ function mediaFactory(photographer, medias) {
       heart.setAttribute("aria-label", "bouton cliquable pour liker");
       heart.className = "fa-solid fa-heart fa-xl";
       heart.setAttribute("flag", "true");
+      heart.setAttribute("tabindex", "0");
             
       title.textContent = file[0];
       span.textContent = mapLikes.get(file[0]);
@@ -42,7 +43,6 @@ function mediaFactory(photographer, medias) {
       counter = counter + mapLikes.get(file[0]);
             
       if(String(file).includes(".jpg")) {
-        console.log(photographer.id)
         let image = new imageDisplay(folder, file[1], file[0]);
         locDiv.appendChild(image);
         image.onclick = () => {
@@ -61,14 +61,22 @@ function mediaFactory(photographer, medias) {
         locDiv.appendChild(video);
       }
       heart.onclick = () => {
-        console.log(heart.getAttribute("flag"))
         if(heart.getAttribute("flag") === "true" ) {
           span.textContent = mapLikes.get(file[0]) + 1;
-          console.log(span.textContent);
           heart.setAttribute("flag", "false");
           spanLikes.textContent = parseInt(spanLikes.textContent) + 1;
         }
       }
+
+      heart.addEventListener('keyup', function(e){
+        if (e.key === "Enter") {
+          if(heart.getAttribute("flag") === "true" ) {
+            span.textContent = mapLikes.get(file[0]) + 1;
+            heart.setAttribute("flag", "false");
+            spanLikes.textContent = parseInt(spanLikes.textContent) + 1;
+          }
+        }
+      })
         
       likes.appendChild(title);
       likes.appendChild(span);

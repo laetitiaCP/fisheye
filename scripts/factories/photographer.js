@@ -8,12 +8,12 @@ function photographerFactory(data) {
     const link1 = document.createElement('a');
     let locURL = "photographer.html?id=" + id ;
     link1.setAttribute("href", locURL);
-    link1.setAttribute("aria-label","lien vers la page de présentation du photographe");
+    link1.setAttribute("aria-label","lien vers la page de présentation du photographe " + name );
         
 
     const link2 = document.createElement('a');
     link2.setAttribute("href", locURL);
-    link2.setAttribute("aria-label","lien vers la page de présentation du photographe");
+    link2.setAttribute("aria-label","lien vers la page de présentation du photographe " + name);
 
     const img = document.createElement( 'img' );
     img.setAttribute("id", "image-photographer")

@@ -12,10 +12,12 @@ let mediaIndex;
 let counter = 0;
 
 prevLink.className = "prev";
+prevLink.setAttribute("aria-label", "bouton image précédente");
 chevronLeft.className = "fa-solid fa-chevron-left fa-2xl";
 prevLink.appendChild(chevronLeft);
 
 nextLink.className = "next";
+nextLink.setAttribute("aria-label", "bouton image suivante");
 chevronRight.className = "fa-solid fa-chevron-right fa-2xl";
 nextLink.appendChild(chevronRight);
 
