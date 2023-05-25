@@ -104,7 +104,7 @@ function showImage(parPathImage) {
     let locElementH2 = document.createElement("h2")
     locElementH2.setAttribute("id", "title-lightbox");
     medias.appendChild(locElementH2);
- }
+  }
   
   locElementTitle = document.getElementById("title-lightbox");
 
