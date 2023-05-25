@@ -46,7 +46,6 @@ function rotateIcone() {
 }
 
 function findTitleWithPath(parPath) {
-  console.log(parPath)
   let locPath = String(parPath);
   let locPathWithoutType;
   let locTitle = "";

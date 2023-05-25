@@ -44,8 +44,8 @@ function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
     srcImage = parImage.src;
   }
 
-  let locSplitSrc = String(srcImage).split('fisheye/fisheye/');
-  showImage(locSplitSrc[1]);
+  let locSplitSrc = String(srcImage).split('fisheye/');
+  showImage(locSplitSrc[locSplitSrc.length - 1]);
   listMedias = mapToList(parMapMedias);
   for (let i = 0; i < listMedias.length ; i++) {
     if (listMedias[i] === parNameImg) {
