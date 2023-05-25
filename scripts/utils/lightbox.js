@@ -2,6 +2,8 @@ const lightbox = document.getElementById("lightbox");
 const closeImg =  document.getElementById("close-img");
 const medias = document.getElementById('myMedias');
 const imageElement = document.createElement('img');
+const videoElement = document.createElement('video');
+const sourceVideo = document.createElement('source');
 const prevLink = document.createElement('a');
 const nextLink = document.createElement('a');
 const chevronLeft = document.createElement('i');
@@ -12,12 +14,12 @@ let mediaIndex;
 let counter = 0;
 
 prevLink.className = "prev";
-prevLink.setAttribute("aria-label", "bouton image précédente");
+prevLink.setAttribute("aria-label", "bouton média précédent");
 chevronLeft.className = "fa-solid fa-chevron-left fa-2xl";
 prevLink.appendChild(chevronLeft);
 
 nextLink.className = "next";
-nextLink.setAttribute("aria-label", "bouton image suivante");
+nextLink.setAttribute("aria-label", "bouton média suivant");
 chevronRight.className = "fa-solid fa-chevron-right fa-2xl";
 nextLink.appendChild(chevronRight);
 
@@ -34,10 +36,17 @@ function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
   lightbox.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
 
-  const srcImage = parImage.src;
-  showImage(srcImage);
-  listMedias = mapToListWithoutVideo(parMapMedias);
-    
+  let srcImage;
+  if(!parImage.src) {
+    let locSource = document.getElementsByTagName('source');
+    srcImage = locSource[0].src;
+  } else {
+    srcImage = parImage.src;
+  }
+  console.log(srcImage)
+  let locSplitSrc = String(srcImage).split('fisheye/fisheye/');
+  showImage(locSplitSrc[1]);
+  listMedias = mapToList(parMapMedias);
   for (let i = 0; i < listMedias.length ; i++) {
     if (listMedias[i] === parNameImg) {
       mediaIndex = i;
@@ -85,13 +94,49 @@ function plusMedias(n, parIndex, parListMedias, parFolder) {
     locIdx = locIdx - parListMedias.length ;
   }
   let pathImage = parFolder + parListMedias[locIdx];
+  console.log(parListMedias);
   showImage(pathImage);
 }
 
-function showImage(parImage) {
-  imageElement.setAttribute('src', parImage);
-  imageElement.id = "image-modale";
-  medias.appendChild(imageElement); 
+function showImage(parPathImage) {
+  let locElementTitle;
+  if(!document.getElementById("title-lightbox")){
+    let locElementH2 = document.createElement("h2")
+    locElementH2.setAttribute("id", "title-lightbox");
+    medias.appendChild(locElementH2);
+ }
+  
+  locElementTitle = document.getElementById("title-lightbox");
+  console.log(document.getElementById("title-lightbox"))
+
+  if(String(parPathImage).includes(".mp4")) {
+    if (imageElement.id) {
+      medias.removeChild(imageElement);
+      imageElement.removeAttribute("id");
+    }
+    sourceVideo.setAttribute("src", parPathImage);
+    videoElement.setAttribute("controls", "true");
+    videoElement.setAttribute("tabindex", "+1");
+    videoElement.id = "video-modale";
+    videoElement.appendChild(sourceVideo);
+    medias.appendChild(videoElement);
+    let locTitle = findTitleWithPath(parPathImage);
+    locElementTitle.textContent = locTitle;
+
+  } else {
+    if (videoElement.id) {
+      medias.removeChild(videoElement);
+      videoElement.removeAttribute("id");
+    }
+    imageElement.setAttribute('src', parPathImage);
+    imageElement.id = "image-modale";
+    medias.appendChild(imageElement);
+    let locTitle = findTitleWithPath(parPathImage);
+    locElementTitle.textContent = locTitle;
+  }
+
+  medias.appendChild(locElementTitle);
+  
 }
 
 

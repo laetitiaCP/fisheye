@@ -59,7 +59,19 @@ function mediaFactory(photographer, medias) {
       if(String(file).includes('.mp4')) {
         let video = new videoDisplay(folder, file[1], file[0]);
         locDiv.appendChild(video);
+        video.onclick = () => {
+          lightbox.style.display = "block";
+          openMedia(video, mapMedias, folder, file[1]);
+        };
+        video.addEventListener('keyup', function(e){
+          if (e.key === "Enter") {
+            lightbox.style.display = "block";
+            openMedia(video, mapMedias, folder, file[1]);
+          }
+        } )
+      
       }
+
       heart.onclick = () => {
         if(heart.getAttribute("flag") === "true" ) {
           span.textContent = mapLikes.get(file[0]) + 1;
@@ -108,7 +120,7 @@ function imageDisplay(parFolder, parNameImg, parTitleImg) {
   const pathImg = parFolder + parNameImg;
     
   img.setAttribute("src", pathImg);
-  img.setAttribute("alt", "photographie " + parTitleImg);        
+  img.setAttribute("alt", parTitleImg);        
   img.setAttribute("aria-label", "photographie " + parTitleImg);
   img.setAttribute("tabindex", "0");
   return img;
@@ -118,10 +130,8 @@ function videoDisplay(parFolder, parNameVideo, parTitleImg) {
   const video = document.createElement('video');
   const source = document.createElement('source');
   const pathVideo = parFolder + parNameVideo;
-  video.setAttribute("controls", "true");
-  video.addEventListener("click", function(){ openMedia(this)});
   source.setAttribute("src", pathVideo);
-  source.setAttribute("alt", "video" + parTitleImg);
+  source.setAttribute("alt", parTitleImg);
   source.setAttribute("type", "video/mp4");
 
   video.appendChild(source);

@@ -45,3 +45,26 @@ function rotateIcone() {
   }
 }
 
+function findTitleWithPath(parPath) {
+  let locPath = String(parPath);
+  let locPathWithoutType;
+  let locTitle = "";
+  if(locPath.includes(".mp4")) {
+    locPathWithoutType = locPath.replace(".mp4", " ");
+  } else {
+    locPathWithoutType = locPath.replace(".jpg", " ");
+  }
+  let locSrcSplit = locPathWithoutType.split("/")
+  locTitleArray = locSrcSplit[3].split("_");
+
+  for(let i=0; i< locTitleArray.length; i++){
+    locTitle = locTitle + " " + locTitleArray[i];
+  }
+    
+    console.log(locTitle)
+  
+  
+  
+  return locTitle;
+}
+

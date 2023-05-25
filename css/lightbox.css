@@ -45,6 +45,16 @@
     object-fit: cover;
 }
 
+#video-modale {
+    position: absolute;
+    width: 1050px;
+    height: 850px;
+    border-radius: 5px;
+    top: -50px;
+    right: -50px;
+    object-fit: cover;
+}
+
 /* boutons prev et next */
 .prev,
 .next {
@@ -63,4 +73,12 @@
 
 .prev {
 left: -65px;
+}
+
+#title-lightbox {
+    color: #901C1C;
+    font-size: 24px;
+    position: absolute;
+    z-index: 1;
+    bottom: -50px;;
 }
