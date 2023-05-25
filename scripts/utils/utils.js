@@ -60,11 +60,6 @@ function findTitleWithPath(parPath) {
   for(let i=0; i< locTitleArray.length; i++){
     locTitle = locTitle + " " + locTitleArray[i];
   }
-    
-    console.log(locTitle)
-  
-  
-  
   return locTitle;
 }
 

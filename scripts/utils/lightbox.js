@@ -43,7 +43,7 @@ function openMedia(parImage, parMapMedias, parFolder, parNameImg) {
   } else {
     srcImage = parImage.src;
   }
-  console.log(srcImage)
+
   let locSplitSrc = String(srcImage).split('fisheye/fisheye/');
   showImage(locSplitSrc[1]);
   listMedias = mapToList(parMapMedias);
@@ -94,7 +94,7 @@ function plusMedias(n, parIndex, parListMedias, parFolder) {
     locIdx = locIdx - parListMedias.length ;
   }
   let pathImage = parFolder + parListMedias[locIdx];
-  console.log(parListMedias);
+  
   showImage(pathImage);
 }
 
@@ -107,7 +107,6 @@ function showImage(parPathImage) {
  }
   
   locElementTitle = document.getElementById("title-lightbox");
-  console.log(document.getElementById("title-lightbox"))
 
   if(String(parPathImage).includes(".mp4")) {
     if (imageElement.id) {

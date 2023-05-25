@@ -36,7 +36,6 @@ async function sortMedias(parValue) {
 
 
   function sort(parComparator, parParam) {
-    console.log(listMedias)
     listMedias.sort(parComparator(parParam));
     const mediaModel = mediaFactory(photographer, listMedias);
     const userMedias = mediaModel.getUserMedias();
