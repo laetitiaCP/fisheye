@@ -46,6 +46,7 @@ function rotateIcone() {
 }
 
 function findTitleWithPath(parPath) {
+  console.log(parPath)
   let locPath = String(parPath);
   let locPathWithoutType;
   let locTitle = "";
@@ -55,7 +56,7 @@ function findTitleWithPath(parPath) {
     locPathWithoutType = locPath.replace(".jpg", " ");
   }
   let locSrcSplit = locPathWithoutType.split("/")
-  locTitleArray = locSrcSplit[3].split("_");
+  locTitleArray = locSrcSplit[locSrcSplit.length - 1].split("_");
 
   for(let i=0; i< locTitleArray.length; i++){
     locTitle = locTitle + " " + locTitleArray[i];
